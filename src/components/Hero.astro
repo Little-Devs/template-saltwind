@@ -1,0 +1,65 @@
+---
+import { site } from '../data/site';
+
+const { hero } = site;
+---
+
+<section class="hero-atmo grain relative overflow-hidden text-foam">
+  <svg
+    class="pointer-events-none absolute -right-16 -top-16 h-[26rem] w-[26rem] text-foam/15"
+    viewBox="0 0 200 200"
+    fill="none"
+    aria-hidden="true"
+  >
+    <circle cx="100" cy="100" r="40" stroke="currentColor" stroke-width="1" />
+    <circle cx="100" cy="100" r="62" stroke="currentColor" stroke-width="1" />
+    <circle cx="100" cy="100" r="84" stroke="currentColor" stroke-width="1" />
+    <circle cx="100" cy="100" r="96" stroke="currentColor" stroke-width="1" stroke-dasharray="3 6" />
+  </svg>
+
+  <div class="relative z-10 mx-auto max-w-6xl px-5 pb-24 pt-16 md:pb-32 md:pt-24">
+    <p class="kicker text-foam/70">{hero.kicker}</p>
+
+    <h1 class="mt-5 max-w-[16ch] font-display text-5xl leading-[1.04] text-foam md:text-7xl">
+      {hero.title}
+    </h1>
+
+    <p class="mt-6 max-w-[48ch] text-lg leading-relaxed text-foam/80">{hero.lead}</p>
+
+    <div class="mt-9 flex flex-wrap items-center gap-3">
+      <a
+        class="bg-foam px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-rust hover:text-foam"
+        href={hero.primaryCta.href}
+      >
+        {hero.primaryCta.label}
+      </a>
+      <a
+        class="border border-foam/40 px-6 py-3 text-sm font-semibold text-foam transition-colors hover:border-rust hover:bg-rust/20"
+        href={hero.secondaryCta.href}
+      >
+        {hero.secondaryCta.label}
+      </a>
+    </div>
+
+    <p class="mt-10 text-xs font-medium uppercase tracking-[0.18em] text-foam/60">{hero.weather}</p>
+
+    <dl class="mt-12 grid max-w-2xl grid-cols-1 gap-6 border-t border-foam/20 pt-8 sm:grid-cols-3">
+      {
+        hero.facts.map((fact) => (
+          <div>
+            <dt class="sr-only">{fact.label}</dt>
+            <dd>
+              <span class="block font-display text-4xl text-foam">{fact.value}</span>
+              <span class="mt-1 block text-sm text-foam/70">{fact.label}</span>
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+
+  <svg class="absolute bottom-0 left-0 z-10 h-8 w-full text-foam/20" viewBox="0 0 1200 32" preserveAspectRatio="none" fill="none" aria-hidden="true">
+    <path d="M0 16 Q 75 4 150 16 T 300 16 T 450 16 T 600 16 T 750 16 T 900 16 T 1050 16 T 1200 16" stroke="currentColor" stroke-width="1.5" />
+    <path d="M0 28 Q 75 18 150 28 T 300 28 T 450 28 T 600 28 T 750 28 T 900 28 T 1050 28 T 1200 28" stroke="currentColor" stroke-width="1" opacity="0.5" />
+  </svg>
+</section>
