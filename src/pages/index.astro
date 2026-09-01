@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Rooms from '../components/Rooms.astro';
+import Table from '../components/Table.astro';
+import Coast from '../components/Coast.astro';
+import Stay from '../components/Stay.astro';
+import Contact from '../components/Contact.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout>
+  <Header />
+  <main id="main">
+    {site.sections.hero && <Hero />}
+    {site.sections.rooms && <Rooms />}
+    {site.sections.table && <Table />}
+    {site.sections.coast && <Coast />}
+    {site.sections.stay && <Stay />}
+    {site.sections.contact && <Contact />}
+  </main>
+  <Footer />
+</BaseLayout>

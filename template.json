@@ -1,0 +1,86 @@
+{
+  "id": "saltwind",
+  "name": "Saltwind Inn",
+  "description": "Coastal inn landing on a working harbour. Linen, kelp, salt gold, and a serif masthead. Light-custom: logo, colours, fonts, copy, and section on/off. Distinct from spa/thermal templates.",
+  "category": "landing-page",
+  "subcategory": "hospitality",
+  "repository": "https://github.com/Little-Devs/template-saltwind",
+  "demoUrl": "https://saltwind.little.website/",
+  "previewImage": "",
+  "techStack": {
+    "framework": "Astro",
+    "version": "5.17.1",
+    "styling": "CSS variables",
+    "scripting": "TypeScript",
+    "buildTool": "Vite"
+  },
+  "features": [
+    "Coastal inn landing on a working harbour",
+    "Light-custom: logo, colours, fonts, and copy",
+    "Section on/off for hero, rooms, stay, table, harbour, and contact",
+    "Linen, kelp, and salt gold palette",
+    "Serif masthead (Newsreader)",
+    "Distinct from spa and thermal templates",
+    "Fully responsive Astro SSG"
+  ],
+  "aesthetic": {
+    "style": "Coastal inn",
+    "description": "Coastal inn landing on a working harbour",
+    "fonts": {
+      "display": "Newsreader",
+      "ui": "Karla",
+      "sans": "Karla",
+      "primary": "Newsreader"
+    },
+    "colors": {
+      "primary": "#0e3a4a",
+      "primaryName": "Harbour",
+      "accent": "#c9a36a",
+      "accentName": "Salt gold",
+      "background": "#f6f1e8",
+      "backgroundName": "Linen",
+      "harbour": "#0e3a4a",
+      "kelp": "#3f6b5e",
+      "gold": "#c9a36a",
+      "linen": "#f6f1e8"
+    }
+  },
+  "sections": [
+    "Hero",
+    "Rooms",
+    "Stay",
+    "Table",
+    "Harbour",
+    "Contact"
+  ],
+  "useCases": [
+    "Coastal inns",
+    "Boutique lodging",
+    "Harbour hotels",
+    "Hospitality stays"
+  ],
+  "customization": {
+    "difficulty": "easy",
+    "colorScheme": "CSS variables",
+    "typography": "Google Fonts (Newsreader, Karla)",
+    "layout": "CSS Grid + Flexbox"
+  },
+  "performance": {
+    "framework": "Astro (SSG)",
+    "cssOnly": "Most animations",
+    "lighthouse": "90+"
+  },
+  "license": "MIT",
+  "author": "Little-Devs",
+  "createdAt": "2026-09-01",
+  "lastUpdated": "2026-09-01",
+  "tags": [
+    "landing-page",
+    "inn",
+    "hospitality",
+    "coastal",
+    "astro",
+    "ssg"
+  ],
+  "version": "1.0.0"
+}
