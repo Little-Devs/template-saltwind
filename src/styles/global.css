@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@theme {
+  --color-salt: #f3eee6;
+  --color-foam: #fffcf7;
+  --color-ink: #1c2422;
+  --color-kelp: #2f5e4e;
+  --color-rust: #b85c38;
+  --color-dusk: #3d4a6b;
+
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Brand tokens as plain CSS variables, mirroring @theme */
+:root {
+  --salt: #f3eee6;
+  --foam: #fffcf7;
+  --ink: #1c2422;
+  --kelp: #2f5e4e;
+  --rust: #b85c38;
+  --dusk: #3d4a6b;
+  --line: color-mix(in srgb, var(--ink) 14%, transparent);
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--salt);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--rust);
+  color: var(--foam);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---- shared bits Tailwind is awkward at ---- */
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 1rem;
+  z-index: 50;
+  background: var(--ink);
+  color: var(--foam);
+  padding: 0.55rem 0.9rem;
+  font-size: 0.85rem;
+}
+.skip-link:focus {
+  left: 1rem;
+}
+
+.kicker {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.grain {
+  position: relative;
+  isolation: isolate;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: var(--grain);
+  background-size: 140px;
+  mix-blend-mode: soft-light;
+  opacity: 0.55;
+}
+
+/* ---- hero atmosphere: dusk sea, no photo ---- */
+
+.hero-atmo {
+  background:
+    radial-gradient(110% 70% at 80% -10%, rgba(184, 92, 56, 0.38) 0%, transparent 55%),
+    radial-gradient(90% 60% at 8% 112%, rgba(47, 94, 78, 0.4) 0%, transparent 60%),
+    linear-gradient(178deg, #2b3450 0%, var(--dusk) 38%, #2c4152 62%, #17201f 88%, var(--ink) 100%);
+}
+
+/* ---- room cards as gradient fields, with geometric plans ---- */
+
+.room-field {
+  --plan-stroke: rgba(255, 252, 247, 0.85);
+  color: var(--plan-stroke);
+}
+
+.field-lochard {
+  background: linear-gradient(160deg, #46527a 0%, var(--dusk) 42%, var(--kelp) 100%);
+}
+.field-gibson {
+  --plan-stroke: rgba(28, 36, 34, 0.8);
+  background: linear-gradient(160deg, #ead9bd 0%, #d9a06b 55%, var(--rust) 100%);
+}
+.field-sherbrook {
+  --plan-stroke: rgba(28, 36, 34, 0.75);
+  background: linear-gradient(165deg, #eef0ec 0%, #b7c2c9 60%, #6f8296 100%);
+}
+.field-muttonbird {
+  background-image:
+    radial-gradient(circle at 22% 26%, rgba(255, 252, 247, 0.9) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 64% 14%, rgba(255, 252, 247, 0.7) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 82% 42%, rgba(255, 252, 247, 0.8) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 38% 52%, rgba(255, 252, 247, 0.6) 0 1px, transparent 1.8px),
+    linear-gradient(180deg, #141c1b 0%, var(--dusk) 100%);
+}
+.field-curdies {
+  background: linear-gradient(160deg, var(--kelp) 0%, #24483c 55%, var(--ink) 100%);
+}
+.field-grotto {
+  background: linear-gradient(155deg, var(--dusk) 0%, #5a4457 60%, var(--rust) 115%);
+}
+
+.room-plan {
+  stroke: currentColor;
+  fill: none;
+}
+
+/* ---- tide timetable strip ---- */
+
+.tide-scroll {
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rust) transparent;
+}
+.tide-day {
+  scroll-snap-align: start;
+}
+.tide-num {
+  font-variant-numeric: tabular-nums;
+}
