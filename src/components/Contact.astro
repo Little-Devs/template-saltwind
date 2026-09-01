@@ -1,0 +1,112 @@
+---
+import { site } from '../data/site';
+
+const { contact, enquiry } = site;
+---
+
+<section id="contact" class="scroll-mt-20 bg-dusk text-foam">
+  <div class="mx-auto grid max-w-6xl gap-12 px-5 py-20 md:py-28 lg:grid-cols-2">
+    <div>
+      <p class="kicker text-foam/60">{enquiry.kicker}</p>
+      <h2 class="mt-4 font-display text-4xl leading-tight text-foam md:text-5xl">{enquiry.title}</h2>
+      <p class="mt-5 max-w-[46ch] leading-relaxed text-foam/80">{enquiry.intro}</p>
+
+      <dl class="mt-10 space-y-5 text-sm">
+        <div>
+          <dt class="kicker text-foam/50">Email</dt>
+          <dd class="mt-1.5">
+            <a class="font-display text-2xl text-foam underline-offset-4 hover:text-rust" href={`mailto:${contact.email}`}>
+              {contact.email}
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt class="kicker text-foam/50">Phone</dt>
+          <dd class="mt-1.5 tide-num text-lg text-foam/90">
+            <a class="hover:text-rust" href={contact.phoneHref}>{contact.phone}</a>
+          </dd>
+        </div>
+        <div>
+          <dt class="kicker text-foam/50">Post</dt>
+          <dd class="mt-1.5 text-lg text-foam/90">{contact.address}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <form
+      id="contact-form"
+      action={`mailto:${contact.email}`}
+      method="post"
+      enctype="text/plain"
+      data-email={contact.email}
+      class="self-start border border-foam/25 bg-foam/5 p-6 md:p-8"
+    >
+      <div class="grid gap-5 sm:grid-cols-2">
+        <label class="block sm:col-span-1">
+          <span class="kicker block text-foam/60">{enquiry.form.fields.name}</span>
+          <input
+            type="text"
+            name="name"
+            required
+            autocomplete="name"
+            class="mt-2 w-full border border-foam/30 bg-transparent px-3 py-2.5 text-foam placeholder:text-foam/40 focus:border-rust focus:outline-none"
+          />
+        </label>
+        <label class="block sm:col-span-1">
+          <span class="kicker block text-foam/60">{enquiry.form.fields.email}</span>
+          <input
+            type="email"
+            name="email"
+            required
+            autocomplete="email"
+            class="mt-2 w-full border border-foam/30 bg-transparent px-3 py-2.5 text-foam placeholder:text-foam/40 focus:border-rust focus:outline-none"
+          />
+        </label>
+        <label class="block sm:col-span-2">
+          <span class="kicker block text-foam/60">{enquiry.form.fields.dates}</span>
+          <input
+            type="text"
+            name="dates"
+            placeholder={enquiry.form.fields.datesPlaceholder}
+            class="mt-2 w-full border border-foam/30 bg-transparent px-3 py-2.5 text-foam placeholder:text-foam/40 focus:border-rust focus:outline-none"
+          />
+        </label>
+        <label class="block sm:col-span-2">
+          <span class="kicker block text-foam/60">{enquiry.form.fields.note}</span>
+          <textarea
+            name="note"
+            rows="4"
+            placeholder={enquiry.form.fields.notePlaceholder}
+            class="mt-2 w-full resize-y border border-foam/30 bg-transparent px-3 py-2.5 text-foam placeholder:text-foam/40 focus:border-rust focus:outline-none"
+          ></textarea>
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        class="mt-6 w-full bg-foam px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-rust hover:text-foam sm:w-auto"
+      >
+        {enquiry.form.submit}
+      </button>
+      <p class="mt-3 text-xs text-foam/55">{enquiry.form.note}</p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const email = form.dataset.email ?? 'sales@little.cloud';
+    const data = new FormData(form);
+    const name = String(data.get('name') ?? '').trim();
+    const reply = String(data.get('email') ?? '').trim();
+    const dates = String(data.get('dates') ?? '').trim();
+    const note = String(data.get('note') ?? '').trim();
+
+    const subject = `Saltwind Inn enquiry — ${name || 'dates'}`;
+    const body = [`Name: ${name}`, `Email: ${reply}`, `Dates: ${dates}`, '', note].join('\n');
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+</script>

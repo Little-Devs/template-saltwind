@@ -1,0 +1,72 @@
+---
+import { site } from '../data/site';
+
+const { coast } = site;
+---
+
+<section id="coast" class="grain scroll-mt-20 bg-ink text-salt">
+  <div class="relative z-10 mx-auto max-w-6xl px-5 py-20 md:py-28">
+    <div class="max-w-2xl">
+      <p class="kicker text-foam/60">{coast.kicker}</p>
+      <h2 class="mt-4 font-display text-4xl leading-tight text-foam md:text-5xl">{coast.title}</h2>
+      <p class="mt-5 leading-relaxed text-salt/75">{coast.manifesto}</p>
+    </div>
+
+    <div class="mt-12 grid gap-10 lg:grid-cols-5">
+      <div class="lg:col-span-3">
+        <h3 class="kicker text-rust">Walks from the gate</h3>
+        <ul class="mt-5">
+          {
+            coast.walks.map((walk) => (
+              <li class="border-b border-foam/15 py-4 first:border-t">
+                <p class="font-display text-2xl text-foam">{walk.name}</p>
+                <p class="mt-1 text-sm text-salt/65">{walk.note}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <aside class="lg:col-span-2">
+        <div class="border border-foam/20 bg-dusk/40 p-6">
+          <h3 class="kicker text-foam/60">{coast.weather.heading}</h3>
+          <dl class="mt-5">
+            {
+              coast.weather.rows.map((row) => (
+                <div class="flex items-baseline justify-between gap-4 border-b border-foam/10 py-3 last:border-b-0">
+                  <dt class="text-xs font-semibold uppercase tracking-[0.18em] text-foam/50">{row.label}</dt>
+                  <dd class="tide-num text-right text-sm text-foam">{row.value}</dd>
+                </div>
+              ))
+            }
+          </dl>
+          <p class="mt-5 text-xs italic text-foam/55">{coast.weather.note}</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="mt-14 border border-foam/20 bg-foam text-ink">
+      <div class="flex flex-wrap items-baseline justify-between gap-2 border-b border-ink/15 px-5 py-4">
+        <h3 class="font-display text-xl text-ink">{coast.tides.heading}</h3>
+        <p class="text-xs text-ink/55">{coast.tides.note}</p>
+      </div>
+      <div class="tide-scroll flex divide-x divide-dashed divide-ink/20">
+        {
+          coast.tides.days.map((day) => (
+            <div class="tide-day min-w-[8.5rem] flex-1 px-4 py-5">
+              <p class="kicker text-rust">{day.day}</p>
+              <ul class="mt-3 space-y-1.5">
+                {day.tides.map(([state, time]) => (
+                  <li class="flex items-baseline gap-2.5">
+                    <span class={`text-xs font-bold ${state === 'H' ? 'text-rust' : 'text-dusk'}`}>{state}</span>
+                    <span class="tide-num text-sm text-ink/80">{time}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

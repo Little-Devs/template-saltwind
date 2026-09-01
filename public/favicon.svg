@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Saltwind Inn">
+  <rect width="64" height="64" fill="#1c2422"/>
+  <circle cx="45" cy="17" r="6" fill="#b85c38"/>
+  <path d="M12 30 L27 17 L42 30" fill="none" stroke="#fffcf7" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="17" y="30" width="20" height="16" fill="none" stroke="#fffcf7" stroke-width="2.5"/>
+  <path d="M6 52 q6 -6 12 0 t12 0 t12 0 t12 0" fill="none" stroke="#2f5e4e" stroke-width="2.5"/>
+  <path d="M6 58 q6 -6 12 0 t12 0 t12 0 t12 0" fill="none" stroke="#3d4a6b" stroke-width="2.5"/>
+</svg>
